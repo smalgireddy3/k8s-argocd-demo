@@ -6,7 +6,7 @@ metadata:
   labels:
     app: argocd-demo
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: argocd-demo
@@ -23,3 +23,11 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
+          resources:
+            requests:
+              cpu: "500m"    # reserve 0.5 CPU core
+              memory: "256Mi"   # reserve 256 MiB RAM
+            limits:
+              cpu: "1"       # cap at 1 CPU core
+              memory: "512Mi"   # cap at 512 MiB RAM
+
