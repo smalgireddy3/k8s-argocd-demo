@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-demo
+  namespace: argocd-demo
+  labels:
+    app: argocd-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: argocd-demo
+  template:
+    metadata:
+      labels:
+        app: argocd-demo
+    spec:
+      imagePullSecrets:
+        - name: ecr-registry
+      containers:
+        - name: argocd-demo
+          image: 456433063024.dkr.ecr.us-east-2.amazonaws.com/datascience/k8s-argocd-demo-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
