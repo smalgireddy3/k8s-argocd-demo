@@ -1,0 +1,18 @@
+resources:
+  - ./../../base
+
+patches:
+  - target:
+      kind: Deployment
+      name: kustomizatoin-demo
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3
+  - patch: |-
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: kustomizatoin-demo
+        spec:
+          replicas: 4

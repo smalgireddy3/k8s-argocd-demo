@@ -1,13 +1,12 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: argocd-demo-hpa
-  namespace: argocd-demo
+  name: kustomizatoin-demo-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: argocd-demo
+    name: kustomizatoin-demo
   minReplicas: 1
   maxReplicas: 5
   metrics:
