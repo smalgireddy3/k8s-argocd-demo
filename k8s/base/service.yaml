@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kustomizatoin-demo-svc
+spec:
+  type: NodePort                    # <- allow nodePort
+  selector:
+    app: kustomizatoin-demo             # <- make sure this matches your Deployment’s pod labels
+  ports:
+     - port: 8000                    # in-cluster port
+       targetPort: 8000              # container port
+       nodePort: 30083        # node port (must be in your cluster’s 30000–32767 range)

@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  name: kustomize-demo
+
+namespace: kustomization-demo
+
+namePrefix: ds-demo-
+resources:
+- deployment.yaml
+- service.yaml
+- ns.yaml
+- hpa.yaml
+
+#json patch
+#patches:
+#  - target:
+#      kind: Deployment
+#      name: kustomizatoin-demo
+#    patch: |-
+#      - op: replace
+#        path: /spec/replicas
+#        value: 2
+
+#strategic merge patch
+#  - patch: |-
+#      apiVersion: apps/v1
+#      kind: Deployment
+#      metadata:
+#        name: kustomizatoin-demo
+#      spec:
+#        replicas: 4
