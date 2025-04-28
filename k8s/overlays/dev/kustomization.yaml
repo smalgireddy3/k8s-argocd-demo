@@ -15,4 +15,4 @@ patches:
         metadata:
           name: kustomizatoin-demo
         spec:
-          replicas: 2
+          replicas: 1
