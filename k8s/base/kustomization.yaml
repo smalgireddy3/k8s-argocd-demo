@@ -5,7 +5,6 @@ metadata:
 
 namespace: kustomization-demo
 
-namePrefix: ds-demo-
 resources:
 - deployment.yaml
 - service.yaml
