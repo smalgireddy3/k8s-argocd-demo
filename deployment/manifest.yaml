@@ -12,7 +12,7 @@ metadata:
   namespace: kustomization-demo
 spec:
   ports:
-  - nodePort: 30083
+  - nodePort: 30084
     port: 8000
     targetPort: 8000
   selector:
