@@ -9,4 +9,4 @@ spec:
   ports:
      - port: 8000                    # in-cluster port
        targetPort: 8000              # container port
-       nodePort: 30084        # node port (must be in your cluster’s 30000–32767 range)
+       nodePort: 30084        # node port (must be in  30000–32767 range)
