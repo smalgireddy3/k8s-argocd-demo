@@ -20,7 +20,7 @@ metadata:
   name: ds-demo-kustomization-demo
   namespace: dev-kustomization-demo
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: kustomization-demo
