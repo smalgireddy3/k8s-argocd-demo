@@ -4,7 +4,7 @@ resources:
 patches:
   - target:
       kind: Deployment
-      name: kustomizatoin-demo
+      name: kustomization-demo
     patch: |-
       - op: replace
         path: /spec/replicas
