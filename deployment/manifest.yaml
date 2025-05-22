@@ -1,45 +1,38 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    name: kustomizatoin-demo
-  name: kustomization-demo
----
-apiVersion: v1
 kind: Service
 metadata:
-  name: ds-demo-kustomizatoin-demo-svc
-  namespace: kustomization-demo
+  name: ds-demo-kustomization-demo-svc
+  namespace: dev-kustomization-demo
 spec:
   ports:
   - nodePort: 30084
     port: 8000
     targetPort: 8000
   selector:
-    app: kustomizatoin-demo
+    app: kustomization-demo
   type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: kustomizatoin-demo
-  name: ds-demo-kustomizatoin-demo
-  namespace: kustomization-demo
+    app: kustomization-demo
+  name: ds-demo-kustomization-demo
+  namespace: dev-kustomization-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kustomizatoin-demo
+      app: kustomization-demo
   template:
     metadata:
       labels:
-        app: kustomizatoin-demo
+        app: kustomization-demo
     spec:
       containers:
       - image: 456433063024.dkr.ecr.us-east-2.amazonaws.com/datascience/k8s-argocd-demo-app:latest
         imagePullPolicy: IfNotPresent
-        name: kustomizatoin-demo
+        name: kustomization-demo
         ports:
         - containerPort: 8000
         resources:
@@ -55,8 +48,8 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: ds-demo-kustomizatoin-demo-hpa
-  namespace: kustomization-demo
+  name: ds-demo-kustomization-demo-hpa
+  namespace: dev-kustomization-demo
 spec:
   maxReplicas: 5
   metrics:
@@ -70,4 +63,4 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: ds-demo-kustomizatoin-demo
+    name: ds-demo-kustomization-demo
