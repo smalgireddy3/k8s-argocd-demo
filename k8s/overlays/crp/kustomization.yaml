@@ -1,0 +1,14 @@
+resources:
+  - ./../../base
+# Transformers global changes
+namespace: crp-kustomization-demo
+namePrefix: ds-demo-
+patches:
+  # Yaml maifest style patch - Strategic Merge Patch
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: kustomization-demo
+      spec:
+        replicas: 3
